@@ -2,24 +2,30 @@ package org.example;
 import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args ) {
-
+    public static void main(String[] args) {
+        initialisationTableau();
     }
     public static int saisirEntierStrictementPositif() {
         int valeur;
+        Scanner scanner = new Scanner(System.in);
+
         do {
             System.out.println("Please input a number strictly >0");
-            valeur = Scanner.nextInt();
+            valeur = scanner.nextInt();
         } while (valeur <= 0);
+
         return valeur;
     }
 
     public static int saisirEntierPositifOuNul() {
         int valeur;
+        Scanner scanner = new Scanner(System.in);
+
         do {
             System.out.println("Please input a number superior or equal to 0");
-            valeur = Scanner.nextInt();
+            valeur = scanner.nextInt();
         } while (valeur < 0);
+
         return valeur;
     }
 
@@ -41,7 +47,7 @@ public class Main {
         System.out.println(table);
         }
 
-    public static boolean primenumber(){
+    public static void primenumber() {
         int n = saisirEntierStrictementPositif();
         int dividingNumber = 0;
         for (int i = 1;i<=n;i++){
@@ -57,5 +63,73 @@ public class Main {
     }
 
 
+    public static void initialisationTableau() {
+
+        int[] tableau = new int[20];
+
+        Scanner scanner = new Scanner(System.in);
+
+        for (int i = 0; i < tableau.length; i++) {
+            System.out.println("Enter an integer:");
+            tableau[i] = scanner.nextInt();
+        }
+        int minimum = tableau[0];
+        int maximum = tableau[0];
+
+        for (int i = 1; i < tableau.length; i++) {
+
+            if (tableau[i] < minimum) {
+                minimum = tableau[i];
+            }
+
+            if (tableau[i] > maximum) {
+                maximum = tableau[i];
+            }
+
+    }
+    System.out.println("Minimum = " + minimum);
+    System.out.println("Maximum = " + maximum);
+
+    int sum = 0;
+
+    for (int i = 0; i < tableau.length; i++) {
+            sum += tableau[i];
     }
 
+    System.out.println("Sum = " + sum);
+
+
+    System.out.println("Even elements:");
+
+    for (int i = 0; i < tableau.length; i++) {
+
+            if (tableau[i] % 2 == 0) {
+                System.out.print(tableau[i] + " ");
+            }
+    }
+    System.out.println();
+        System.out.println("Elements at even indexes:");
+
+        for (int i = 0; i < tableau.length; i++) {
+
+            if (i % 2 == 0) {
+                System.out.print(tableau[i] + " ");
+            }
+        }
+
+        System.out.println();
+    }
+
+
+    public static void inverseArray(int[] array) {
+
+        for (int i = 0; i < array.length / 2; i++) {
+
+            int temp = array[i];
+
+            array[i] = array[array.length - 1 - i];
+
+            array[array.length - 1 - i] = temp;
+        }
+    }
+}
