@@ -12,6 +12,7 @@ public class Main {
         System.out.println("10. Prime numbers");
         System.out.println("11. Manipulations on a painting");
         System.out.println("13. Hamming distance");
+        System.out.println("14. Delete a character");
 
         int choice = scanner.nextInt();
 
@@ -38,6 +39,11 @@ public class Main {
                 System.out.println(hamming("aaba", "aaha"));
                 System.out.println(hamming("pear", "apple"));
                 System.out.println(hamming("pen", "bottle"));
+                break;
+
+            case 14:
+                System.out.println(delete('a', "banana"));
+                System.out.println(delete('x', "flower"));
                 break;
 
             default:
@@ -198,5 +204,16 @@ public class Main {
         }
 
         return distance;
+    }
+    public static String delete(char c, String s) {
+
+        for (int i = 0; i < s.length(); i++) {
+
+            if (s.charAt(i) == c) {
+                return s.substring(0, i) + s.substring(i + 1);
+            }
+        }
+
+        return s;
     }
 }
