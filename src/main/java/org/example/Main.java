@@ -2,8 +2,35 @@ package org.example;
 import java.util.Scanner;
 
 public class Main {
+
     public static void main(String[] args) {
-        initialisationTableau();
+
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Which exercise?");
+        System.out.println("9. Ruler");
+        System.out.println("10. Prime numbers");
+        System.out.println("11. Manipulations on a painting");
+
+        int choice = scanner.nextInt();
+
+        switch (choice) {
+
+            case 9:
+                ruler();
+                break;
+
+            case 10:
+                primenumber();
+                break;
+
+            case 11:
+                initialisationTableau();
+                break;
+
+            default:
+                System.out.println("Invalid choice");
+        }
     }
     public static int saisirEntierStrictementPositif() {
         int valeur;
