@@ -13,6 +13,9 @@ public class Main {
         System.out.println("11. Manipulations on a painting");
         System.out.println("13. Hamming distance");
         System.out.println("14. Delete a character");
+        System.out.println("15. Scrabble");
+        System.out.println("16. Anagrams");
+        System.out.println("17. Calculator");
 
         int choice = scanner.nextInt();
 
@@ -44,6 +47,22 @@ public class Main {
             case 14:
                 System.out.println(delete('a', "banana"));
                 System.out.println(delete('x', "flower"));
+                break;
+
+            case 15:
+                System.out.println(scrabble("house", "house"));
+                System.out.println(scrabble("bungalows", "hbteslo"));
+                break;
+            case 16:
+                System.out.println(anagram("police", "picole"));
+                System.out.println(anagram("chair", "disc"));
+                break;
+
+            case 17:
+                System.out.println(sum("3+8"));
+                System.out.println(sum("7+52+3"));
+                System.out.println(sum("+7+8"));
+                System.out.println(sum("4+3+9+"));
                 break;
 
             default:
@@ -215,5 +234,84 @@ public class Main {
         }
 
         return s;
+    }
+    public static boolean scrabble(String word, String lettresDisponibles) {
+
+        String lettres = lettresDisponibles;
+
+        for (int i = 0; i < word.length(); i++) {
+
+            char lettre = word.charAt(i);
+            int position = search(lettre, lettres);
+
+            if (position == -1) {
+                return false;
+            }
+
+            lettres = delete(lettre, lettres);
+        }
+
+        return true;
+    }
+    public static boolean anagram(String u, String v) {
+
+        if (u.length() != v.length()) {
+            return false;
+        }
+
+        String lettres = v;
+
+        for (int i = 0; i < u.length(); i++) {
+
+            char lettre = u.charAt(i);
+            int position = search(lettre, lettres);
+
+            if (position == -1) {
+                return false;
+            }
+
+            lettres = delete(lettre, lettres);
+        }
+
+        return true;
+    }
+    public static int sum(String s) {
+
+        if (s.length() == 0) {
+            return -1;
+        }
+
+        int total = 0;
+        int number = 0;
+        boolean hasDigit = false;
+
+        for (int i = 0; i < s.length(); i++) {
+
+            char c = s.charAt(i);
+
+            if (c >= '0' && c <= '9') {
+                number = number * 10 + (c - '0');
+                hasDigit = true;
+
+            } else if (c == '+') {
+
+                if (!hasDigit) {
+                    return -1;
+                }
+
+                total += number;
+                number = 0;
+                hasDigit = false;
+
+            } else {
+                return -1;
+            }
+        }
+
+        if (!hasDigit) {
+            return -1;
+        }
+
+        return total + number;
     }
 }
