@@ -11,6 +11,7 @@ public class Main {
         System.out.println("9. Ruler");
         System.out.println("10. Prime numbers");
         System.out.println("11. Manipulations on a painting");
+        System.out.println("13. Hamming distance");
 
         int choice = scanner.nextInt();
 
@@ -31,6 +32,12 @@ public class Main {
             case 12:
                 System.out.println(search('o', "horse"));
                 System.out.println(search('a', "school"));
+                break;
+
+            case 13:
+                System.out.println(hamming("aaba", "aaha"));
+                System.out.println(hamming("pear", "apple"));
+                System.out.println(hamming("pen", "bottle"));
                 break;
 
             default:
@@ -174,5 +181,22 @@ public class Main {
         }
 
         return -1;
+    }
+    public static int hamming(String s1, String s2) {
+
+        if (s1.length() != s2.length()) {
+            return -1;
+        }
+
+        int distance = 0;
+
+        for (int i = 0; i < s1.length(); i++) {
+
+            if (s1.charAt(i) != s2.charAt(i)) {
+                distance++;
+            }
+        }
+
+        return distance;
     }
 }
