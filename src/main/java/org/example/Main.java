@@ -28,6 +28,11 @@ public class Main {
                 initialisationTableau();
                 break;
 
+            case 12:
+                System.out.println(search('o', "horse"));
+                System.out.println(search('a', "school"));
+                break;
+
             default:
                 System.out.println("Invalid choice");
         }
@@ -158,5 +163,16 @@ public class Main {
 
             array[array.length - 1 - i] = temp;
         }
+    }
+    public static int search(char c, String s) {
+
+        for (int i = 0; i < s.length(); i++) {
+
+            if (s.charAt(i) == c) {
+                return i;
+            }
+        }
+
+        return -1;
     }
 }
